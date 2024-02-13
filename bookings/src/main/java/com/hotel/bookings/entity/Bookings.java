@@ -2,17 +2,18 @@ package com.hotel.bookings.entity;
 
 import java.math.BigDecimal;
 
+
 //import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.Column;
 
-//import com.hotel.bookings.enums.BookingStatus;
+import com.hotel.bookings.enums.BookingStatus;
 
-//import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
-//import jakarta.persistence.EnumType;
-//import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -52,9 +53,9 @@ public class Bookings {
 	private BigDecimal totalPrice;
 
 	@NotNull
-	// @Enumerated(EnumType.STRING)
+	 @Enumerated(EnumType.STRING)
 	// @Column(name = "status", columnDefinition = "status")
-	private String status;
+	private BookingStatus status;
 
 	public int getBookingId() {
 		return bookingId;
@@ -88,16 +89,10 @@ public class Bookings {
 		this.totalPrice = totalPrice;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 
 	public Bookings(int bookingId, Room room, Customer customer, Date checkInDate, Date checkOutDate,
-			BigDecimal totalPrice, @NotNull String status) {
+			BigDecimal totalPrice, @NotNull BookingStatus status) {
 		super();
 		this.bookingId = bookingId;
 		this.room = room;
@@ -105,6 +100,14 @@ public class Bookings {
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
 		this.totalPrice = totalPrice;
+		this.status = status;
+	}
+
+	public BookingStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(BookingStatus status) {
 		this.status = status;
 	}
 

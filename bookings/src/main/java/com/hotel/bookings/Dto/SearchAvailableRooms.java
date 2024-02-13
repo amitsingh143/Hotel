@@ -5,18 +5,20 @@ import java.math.BigDecimal;
 //import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.hotel.bookings.enums.RoomType;
+
 public class SearchAvailableRooms {
 
-	private String roomType;
+	private RoomType roomType;
 	private Date checkInDate;
 	private Date checkOutDate;
 	private BigDecimal pricePerDay;
 
-	public String getRoomType() {
+	public RoomType getRoomType() {
 		return roomType;
 	}
 
-	public void setRoomType(String roomType) {
+	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
 	}
 
@@ -28,7 +30,7 @@ public class SearchAvailableRooms {
 		this.pricePerDay = pricePerDay;
 	}
 
-	public SearchAvailableRooms(String roomType, Date checkInDate, Date checkOutDate, BigDecimal pricePerDay) {
+	public SearchAvailableRooms(RoomType roomType, Date checkInDate, Date checkOutDate, BigDecimal pricePerDay) {
 		super();
 		this.roomType = roomType;
 		this.checkInDate = checkInDate;
