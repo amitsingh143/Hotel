@@ -6,6 +6,7 @@ import java.util.Date;
 //import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hotel.bookings.entity.Customer;
 import com.hotel.bookings.entity.Room;
+import com.hotel.bookings.enums.BookingStatus;
 
 public class BookingRequest {
 
@@ -23,7 +24,7 @@ public class BookingRequest {
 	}
 
 	public BookingRequest(Customer customer, Date checkInDate, Date checkOutDate, int bookingId, Room room,
-			String status) {
+			BookingStatus status) {
 		super();
 		this.customer = customer;
 		this.checkInDate = checkInDate;
@@ -33,11 +34,11 @@ public class BookingRequest {
 		this.status = status;
 	}
 
-	public String getStatus() {
+	public BookingStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(BookingStatus status) {
 		this.status = status;
 	}
 
@@ -86,6 +87,6 @@ public class BookingRequest {
 	private Date checkOutDate;
 	private int bookingId;
 	private Room room;
-	private String status;
+	private BookingStatus status;
 
 }

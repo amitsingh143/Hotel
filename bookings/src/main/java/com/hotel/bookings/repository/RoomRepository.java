@@ -1,6 +1,7 @@
 package com.hotel.bookings.repository;
 
 import java.math.BigDecimal;
+
 //import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.hotel.bookings.entity.Room;
-//import com.hotel.bookings.enums.RoomType;
+
+import com.hotel.bookings.enums.RoomType;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer> {
@@ -31,7 +33,7 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
 	
 	
-	List<Room> searchAvailableRooms(@Param("roomType") String roomType, @Param("checkInDate") Date checkInDate,
+	List<Room> searchAvailableRooms(@Param("roomType") RoomType roomType, @Param("checkInDate") Date checkInDate,
 			@Param("checkOutDate") Date checkOutDate, @Param("pricePerDay") BigDecimal pricePerDay);
 
 }

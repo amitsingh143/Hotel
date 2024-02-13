@@ -1,6 +1,8 @@
 package com.hotel.bookings.exception;
 
+import java.io.Serializable;
 import java.util.HashMap;
+
 
 import java.util.Map;
 
@@ -16,7 +18,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 
-public class CustomerNotFoundException extends RuntimeException {
+public class CustomerNotFoundException extends RuntimeException implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	public CustomerNotFoundException() {
 		super("Employee not found");
@@ -25,7 +28,7 @@ public class CustomerNotFoundException extends RuntimeException {
 	public CustomerNotFoundException(String message) {
 		super(message);
 	}
-	//customer vlaidation
+	//customer validation
 	@ExceptionHandler(CustomerNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResponseEntity<String> handleEmployeeNotFoundException(CustomerNotFoundException ex) {

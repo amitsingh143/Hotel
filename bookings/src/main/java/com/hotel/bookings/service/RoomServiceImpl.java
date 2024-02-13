@@ -2,6 +2,7 @@ package com.hotel.bookings.service;
 
 import java.math.BigDecimal;
 
+
 //import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Service;
 import com.hotel.bookings.Dto.SearchAvailableRooms;
 import com.hotel.bookings.entity.Bookings;
 import com.hotel.bookings.entity.Room;
-//import com.hotel.bookings.enums.RoomType;
+import com.hotel.bookings.enums.RoomType;
+
 import com.hotel.bookings.exception.RoomNotFoundException;
 import com.hotel.bookings.exception.RoomUnavailableException;
 import com.hotel.bookings.repository.BookingRepository;
@@ -75,7 +77,7 @@ public class RoomServiceImpl implements RoomService {
 	public List<Room> searchRooms(SearchAvailableRooms searchroom) {
 		Date checkInDate = searchroom.getCheckInDate();
 		Date checkOutDate = searchroom.getCheckOutDate();
-		String roomType = searchroom.getRoomType();
+		RoomType roomType = searchroom.getRoomType();
 		BigDecimal pricePerDay = searchroom.getPricePerDay();
 
 		List<Room> availableRooms = roomRepository.searchAvailableRooms(roomType, checkInDate, checkOutDate,
