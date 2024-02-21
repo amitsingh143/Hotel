@@ -3,11 +3,13 @@ package com.hotel.bookings.entity;
 import java.math.BigDecimal;
 
 
+
 //import java.time.LocalDateTime;
 import java.util.Date;
 
 import jakarta.persistence.Column;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hotel.bookings.enums.BookingStatus;
 
 
@@ -43,6 +45,7 @@ public class Bookings {
 
 	@ManyToOne
 	@JoinColumn(name = "customerid")
+	@JsonBackReference
 	private Customer customer;
 	@Column(name = "check_in_date")
 	private Date checkInDate;

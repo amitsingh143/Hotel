@@ -30,9 +30,9 @@ public class EmpServiceImplementation implements EmpService {
 //    }
 
 	@Override
-	public String addEmployee(Employee e) {
-		repo.save(e);
-		return "Employee is created and saved";
+	public Employee addEmployee(Employee e) {
+		repo.save(e);	
+		return 	e;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.sb.entities.Employee;
 import com.example.sb.entities.SearchRequest;
 import com.example.sb.exception.EmployeeNotFoundException;
+import com.example.sb.exception.EmployeeServiceException;
 import com.example.sb.services.EmpService;
 
 import jakarta.validation.Valid;
@@ -38,11 +40,17 @@ public class Controller {
 //    }
 
 	@PostMapping("/add")
-	public String addEmployee( @Valid @RequestBody Employee e) {
-		// logger.log(Level.INFO, "API hitting from controller to add the employee");
-		String msg = empService.addEmployee(e);
-		return msg;
+	public ResponseEntity<String> addEmployee(@Valid @RequestBody Employee e) {
+	    try {
+	        Employee addedEmployee = empService.addEmployee(e);
+	        String message = "Employee added successfully with ID: " + addedEmployee.getEmpId();
+	        return ResponseEntity.status(HttpStatus.CREATED).body(message);
+	    } catch (Exception ex) {
+	        logger.error("Error occurred while adding employee.", ex);
+	        throw new EmployeeServiceException("Error adding employee.", ex);
+	    }
 	}
+
 
 	@PostMapping("/get")
 	public ResponseEntity<Employee> getEmpInfo(@RequestBody Employee e) {
@@ -71,7 +79,7 @@ public class Controller {
 		return result;
 	}
 
-	@PostMapping("/getAll")
+	@GetMapping("/getAll")
 	public List<Employee> getAllEmpInfo() {
 		List<Employee> empListObj = empService.getAllEmpInfo();
 		return empListObj;

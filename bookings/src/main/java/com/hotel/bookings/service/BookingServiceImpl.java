@@ -98,7 +98,8 @@ public class BookingServiceImpl implements BookingService {
 
 		return bookingRepository.save(booking);
 	}
-
+	
+	
 //	private BigDecimal calculateTotalPrice(BigDecimal pricePerDay, Date checkInDate,
 //			Date checkOutDate) {
 //		long days = ChronoUnit.DAYS.between(checkInDate, checkOutDate);

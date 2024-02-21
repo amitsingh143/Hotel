@@ -6,7 +6,7 @@ public class RoomUnavailableException extends RuntimeException implements Serial
     private static final long serialVersionUID = 1L;
 
 	public RoomUnavailableException() {
-		super("room is  not available");
+		super("room is  not available for this date");
 	}
 
 	public RoomUnavailableException(String message) {

@@ -3,8 +3,10 @@ package com.hotel.bookings.entity;
 import java.math.BigDecimal;
 
 
+
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.hotel.bookings.enums.RoomType;
 
 
@@ -128,6 +130,7 @@ public class Room {
 	private int maxOccupancy;
 
 	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+	@JsonBackReference
 	private List<Bookings> bookings;
 
 }

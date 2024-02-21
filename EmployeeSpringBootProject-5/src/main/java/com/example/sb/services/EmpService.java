@@ -11,7 +11,7 @@ import com.example.sb.entities.SearchRequest;
 
 public interface EmpService {
 	
-	public String addEmployee(Employee e);
+	public Employee addEmployee(Employee e);
 	//public Employee getEmpInfo(String empId);
 	public Employee getEmpInfoById(Employee e);
 	public List<Employee> getAllEmpInfo();
